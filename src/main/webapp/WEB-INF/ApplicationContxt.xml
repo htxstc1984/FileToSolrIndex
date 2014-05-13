@@ -1,0 +1,76 @@
+<?xml  version="1.0"  encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	   http://www.springframework.org/schema/context  
+	   http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+	   http://www.springframework.org/schema/tx  
+	   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+	   http://www.springframework.org/schema/util
+	   http://www.springframework.org/schema/util/spring-util-3.0.xsd	   
+	   http://www.springframework.org/schema/aop  
+	   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<context:component-scan base-package="com.itg.solr.web" />
+
+	<bean id="itgnetDS" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>net.sourceforge.jtds.jdbc.Driver</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>jdbc:jtds:sqlserver://172.16.10.237:1433/itg</value>
+		</property>
+		<property name="user">
+			<value>itgnet</value>
+		</property>
+		<property name="password">
+			<value>itgnet</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>100</value>
+		</property>
+		<property name="minPoolSize">
+			<value>100</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>200</value>
+		</property>
+		<property name="acquireIncrement">
+			<value>10</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>10</value>
+		</property>
+		<property name="maxStatements">
+			<value>0</value>
+		</property>
+	</bean>
+
+	<bean id="config" class="com.itg.solr.bean.ConfigLocation">
+		<property name="baseDir">
+			<value>D:/webfolder/ItgNewNew/admin/eEdit/uploadfile</value>
+		</property>
+		<property name="sourceName">
+			<value>内网文件</value>
+		</property>
+		<property name="serverUrl">
+			<value>http://172.16.10.69:8080/solr/collection1</value>
+		</property>
+		<property name="contentTypes">
+			<map>
+				<entry key="pdf" value="application/pdf"></entry>
+				<entry key="xls" value="application/-excel"></entry>
+				<entry key="xlsx"
+					value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></entry>
+				<entry key="doc" value="application/msword"></entry>
+				<entry key="docx" value="application/vnd.ms-word.document.12"></entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>
+
