@@ -15,6 +15,8 @@ public class IndexVO implements Serializable {
 
 	private String src;
 
+	private String infoDate;
+
 	private Map<String, String> attachment;
 
 	public IndexVO() {
@@ -67,6 +69,14 @@ public class IndexVO implements Serializable {
 
 	public void setSrc(String src) {
 		this.src = src;
+	}
+
+	public String getInfoDate() {
+		return infoDate;
+	}
+
+	public void setInfoDate(String infoDate) {
+		this.infoDate = infoDate;
 	}
 
 }

@@ -67,6 +67,11 @@ public class IndexService {
 		// TODO Auto-generated constructor stub
 	}
 
+	@RequestMapping(value = "/search.html")
+	public String search() {
+		return "search";
+	}
+
 	@RequestMapping(value = "/clearArticleIndex.html")
 	@ResponseBody
 	public void clearArticleIndex() throws SolrServerException, IOException {
@@ -162,7 +167,7 @@ public class IndexService {
 			ResultSet rs = dbConn
 					.createStatement()
 					.executeQuery(
-							"select id,title,content,('http://www.itg.net/Article.asp?infoId='+convert(char(10),id)) as url,'内网信息' as src from kfile where showflag='Y' order by id desc");
+							"select id,title,foundtime,content,('http://www.itg.net/Article.asp?infoId='+convert(char(10),id)) as url,'内网信息' as src from kfile where showflag='Y' order by id desc");
 			while (rs.next()) {
 				IndexVO vo = new IndexVO();
 
